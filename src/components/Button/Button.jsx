@@ -14,7 +14,7 @@ function Button(props){
 
     return (
         <button 
-            className="login-btn"
+            className="btn"
             onClick={redirect}
         >
             {text}

@@ -15,6 +15,7 @@ nav {
     padding: 0;
     display: flex;
     gap: 7%;
+    align-items: center;
 }
 .nav .pages li{
     list-style: none;

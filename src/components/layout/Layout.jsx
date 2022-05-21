@@ -3,7 +3,9 @@ import { Link, Outlet } from "react-router-dom";
 import { Button } from "../Button/Button";
 import "./layout.css";
 
-function Layout(){
+function Layout(props){
+    
+    const {user, login} = props;
 
     return (
         <div className="layout">
@@ -21,7 +23,13 @@ function Layout(){
                         </li>
                     </ul>
                     <ul className="sign-up-login">
-                        <Button text="Iniciar secion" link="login"/>
+                        {!!login && !!user.name &&
+                            <h2>{`${user.name} ${user.lastname}`}</h2> 
+                            
+                        }
+                        { !login &&
+                            <Button text="Iniciar secion" link="login"/>
+                        }
                     </ul>
                 </nav>
             </header>
