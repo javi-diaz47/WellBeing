@@ -1,0 +1,30 @@
+.home {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+.home .wrapper{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 2rem 0;
+    gap: 2rem;
+}
+
+.home .wrapper main h2{
+    font-size: 3rem;
+}
+
+.home .wrapper main p{
+    font-size: 1.8rem;
+    text-align: justify;
+}
+
+.home .wrapper main button {
+    padding: 1rem 2rem;
+}
+
+.home .wrapper figure {
+    margin: 0;
+}

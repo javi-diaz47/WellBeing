@@ -1,0 +1,37 @@
+import react from "react";
+import { Link, Outlet } from "react-router-dom";
+import { Button } from "../Button/Button";
+import "./layout.css";
+
+function Layout(){
+
+    return (
+        <div className="layout">
+            <header>
+                <nav className="nav">
+                    <ul className="pages">
+                        <li>
+                            <Link to="/"> Home </Link>
+                        </li>
+                        <li>
+                            <Link to="contact-us"> Contact us </Link>
+                        </li>
+                        <li>
+                            <Link to="about-us"> About us </Link>
+                        </li>
+                    </ul>
+                    <ul className="sign-up-login">
+                        <Button text="Iniciar secion" link="login"/>
+                    </ul>
+                </nav>
+            </header>
+           <section className="content">
+                <Outlet />
+            </section>
+        </div>
+    );
+
+}
+
+
+export { Layout }
