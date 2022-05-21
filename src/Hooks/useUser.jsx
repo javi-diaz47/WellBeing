@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
 function useUser(){
@@ -8,20 +8,25 @@ function useUser(){
     const {
         item: user,
         saveItem: saveUser,
+        removeItem: logout,
         error,
         loading,
     } = useLocalStorage('user', {});
 
-    if(!!user.name){
-        setLogin(true);
-    }
+
+    useEffect(() => {
+        if(!!user.name){
+            setLogin(true);
+        }
+    }, [user.name])
 
     return ({
         user,
         saveUser,
         error,
         loading,
-        login
+        login,
+        logout
     });
 
 }

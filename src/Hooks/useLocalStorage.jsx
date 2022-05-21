@@ -17,7 +17,6 @@ function useLocalStorage(itemName, initValue){
 
                 if(!localStorageItem){
                     localStorage.setItem(itemName, JSON.stringify(initValue));
-                    setLogin(false);
                 }else{
                     parsedItem = JSON.parse(localStorageItem);
                 }
@@ -35,9 +34,14 @@ function useLocalStorage(itemName, initValue){
         localStorage.setItem(itemName, JSON.stringify(newItem));
     }
 
+    const removeItem = () => {
+        localStorage.removeItem(itemName);
+    }
+
     return ({
         item,
         saveItem,
+        removeItem,
         error,
         loading,
     });

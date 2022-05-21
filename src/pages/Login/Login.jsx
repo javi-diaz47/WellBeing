@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
-function Login(){
+function Login(props){
+
+    const { saveUser } = props;
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const navigate = useNavigate();
     
     const onSubmit = (ev) => {
         ev.preventDefault();
@@ -10,12 +17,21 @@ function Login(){
             email,
             password,
         })
+
+         if(email === "test@test.com" && password ==="123"){
+            saveUser({
+                name: "test user",
+                lastname: "",
+                email,
+                password
+            })
+            navigate("/")
+        }
+
         setEmail("");
         setPassword("");
-    }
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    }
 
     const emailOnChange = (ev) => {
         setEmail(ev.target.value);

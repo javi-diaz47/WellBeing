@@ -1,0 +1,1 @@
+Recargar la pagina cada q un usuario haga Login y Logout
