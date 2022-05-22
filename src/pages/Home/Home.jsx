@@ -6,7 +6,6 @@ import "./Home.css";
 function Home(props){
     
     const { user, loading, login } = props;
-
     return (
        <div className="home">
            {
@@ -24,11 +23,11 @@ function Home(props){
                             estadisticas y recibir notificaciones acerca de su peso
                         </p>
                         {
-                            !!login && !!user.name&&
+                            !!login && !!user.name && user.name !== "" &&
                             <Button text="Calcualr mi IMC" link="cal-imc"/>
-                        }
-                        {
-                            !login &&
+                            
+                            ||
+
                             <Button text="registrarme" link="sign-up"/>
                         }
                     </main>

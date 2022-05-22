@@ -1,0 +1,52 @@
+.imc-calculator{
+   height: 100vh;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;    
+}
+
+.calculator-wrapper{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.calculator{
+    display: flex;
+}
+
+.calculator form{
+    display: flex;
+    width: 50%;
+    max-width: 20rem;
+    max-height: 20rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    background-color: white;
+    padding: 2rem 3rem;
+}
+
+.calculator h2{
+    margin: 0;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.calculator label {
+    display: flex;
+    flex-direction: column;
+    color: var(--gray);
+}
+
+.calculator input {
+    background-color: transparent;
+    border-left-style: hidden;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-color: black;
+}
+
+.chart .neumorphism{
+    border-radius: 0;
+}

@@ -3,30 +3,23 @@ import { useLocalStorage } from "./useLocalStorage";
 
 function useUser(){
 
-    const [login, setLogin] = useState(false);
 
     const {
         item: user,
         saveItem: saveUser,
-        removeItem: logout,
+        removeItem: removeUser,
         error,
         loading,
+        login,
     } = useLocalStorage('user', {});
-
-
-    useEffect(() => {
-        if(!!user.name){
-            setLogin(true);
-        }
-    }, [user.name])
 
     return ({
         user,
         saveUser,
+        removeUser,
         error,
         loading,
         login,
-        logout
     });
 
 }

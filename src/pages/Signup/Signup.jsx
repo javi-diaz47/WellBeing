@@ -1,7 +1,10 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import "./Signup.css"
 
 function Signup(){
+
+    const navigate = useNavigate();
 
     const onSubmit = (ev) => {
         ev.preventDefault();
@@ -10,18 +13,18 @@ function Signup(){
             lastName: lastName,
             email,
             password,
-            weight: +weight,
-            height: +height
         })
         setFirstName("");
         setLastName("");
+        navigate("/login")
     }
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [weight, setWeight] = useState('');
-    const [height, setHeight] = useState('');
+    // const [weight, setWeight] = useState('');
+    // const [height, setHeight] = useState('');
 
     // registered | error | neutro
     const state = useState("neutro")
@@ -42,13 +45,13 @@ function Signup(){
         setPassword(ev.target.value);
     }
 
-   const weightOnChange = (ev) => {
-        setWeight(ev.target.value);
-    }
+//    const weightOnChange = (ev) => {
+//         setWeight(ev.target.value);
+//     }
 
-    const heightOnChange = (ev) => {
-        setHeight(ev.target.value);
-    }
+//     const heightOnChange = (ev) => {
+//         setHeight(ev.target.value);
+//     }
     
 
     return (
@@ -84,7 +87,7 @@ function Signup(){
                         onChange={passwordOnChange}
                     />
                 </label>
-                <label name="weight">
+                {/* <label name="weight">
                     Peso (kg)
                     <input 
                         name="weight"
@@ -97,7 +100,7 @@ function Signup(){
                         name="height"
                         onChange={heightOnChange}
                     />
-                </label>
+                </label> */}
 
                 <button type="submit" className="btn">Registrame</button>
 

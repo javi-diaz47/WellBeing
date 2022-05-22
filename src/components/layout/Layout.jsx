@@ -5,10 +5,10 @@ import "./layout.css";
 
 function Layout(props){
     
-    const {user, login, logout} = props;
+    const {user, login, removeUser} = props;
 
     const onLogout = () => {
-       logout();
+        removeUser();
     }
 
     return (
@@ -27,15 +27,18 @@ function Layout(props){
                         </li>
                     </ul>
                     <ul className="sign-up-login">
-                        {!!login && !!user.name &&
-                            <>
-                                <h2>{`${user.name} ${user.lastname}`}</h2> 
-                                <button className="btn" onClick={onLogout}>logout</button>
-                            </> 
+                        {
+                            !!login && !!user.name && user.name !== "" &&
+                                <>
+                                    <h2 className="username">{`${user.name} ${user.lastname}`}</h2> 
+                                    <button className="btn" onClick={onLogout}>logout</button>
+                                </>
+                                
+                                ||
+                                
+                                <Button text="Iniciar secion" link="login"/>
                         }
-                        { !login &&
-                            <Button text="Iniciar secion" link="login"/>
-                        }
+
                     </ul>
                 </nav>
             </header>

@@ -4,7 +4,7 @@ import "./Login.css";
 
 function Login(props){
 
-    const { saveUser } = props;
+    const { saveUser, toggleLogin } = props;
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -19,13 +19,14 @@ function Login(props){
         })
 
          if(email === "test@test.com" && password ==="123"){
+            
             saveUser({
                 name: "test user",
                 lastname: "",
                 email,
                 password
             })
-            navigate("/")
+            navigate("/");
         }
 
         setEmail("");
