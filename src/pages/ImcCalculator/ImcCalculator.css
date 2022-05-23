@@ -9,22 +9,24 @@
     width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 4rem;
 }
 
 .calculator{
     display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .calculator form{
     display: flex;
-    width: 50%;
     max-width: 20rem;
-    max-height: 20rem;
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
     background-color: white;
     padding: 2rem 3rem;
+    transition: .3s;
 }
 
 .calculator h2{
@@ -46,7 +48,34 @@
     border-right-style: hidden;
     border-color: black;
 }
-
+.chart {
+    width: 100%;
+}
 .chart .neumorphism{
     border-radius: 0;
+}
+
+.imc-result{
+    max-width: 20rem;
+    max-height: 20rem;
+    border-radius: 30px;
+    padding: 2rem 3rem;
+}
+
+.imc-calculator p{
+    font-size: 2rem;
+    text-align: center;
+}
+
+#error {
+    color: var(--red);
+    font-size: 1rem;
+    text-align: justify;
+    width: 100%;
+    margin: 0;
+}
+
+#error span {
+    font-weight: bold;
+
 }

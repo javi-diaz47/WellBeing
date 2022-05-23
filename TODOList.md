@@ -1,3 +1,6 @@
-Recargar la pagina cada q un usuario haga Login y Logout
+crear una lista de usuarios registrados localStorage
 
 Colocal Required a todos los inputs
+
+Validar informacion
+

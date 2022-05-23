@@ -30,6 +30,12 @@ nav {
     color: black;
 }
 
+.highlighted{
+    font-weight: bold;
+}
+
+
+
 .sign-up-login{
     display: flex;
     justify-content: right;

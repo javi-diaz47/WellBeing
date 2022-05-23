@@ -16,8 +16,8 @@ function Layout(props){
             <header>
                 <nav className="nav">
                     <ul className="pages">
-                        <li>
-                            <Link to="/"> Home </Link>
+                        <li className="highlighted">
+                            <Link to="/" > Home </Link>
                         </li>
                         <li>
                             <Link to="contact-us"> Contact us </Link>

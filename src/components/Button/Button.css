@@ -2,7 +2,7 @@
     padding: .4rem 1.5rem;
     border-radius: 30px;
     border: 0;
-    background-color: #1E88E5;
+    background-color: var(--blue);
     display: grid;
     text-transform: capitalize;
     text-decoration: none;

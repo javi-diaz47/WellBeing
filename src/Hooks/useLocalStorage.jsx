@@ -49,6 +49,7 @@ function useLocalStorage(itemName, initValue){
 
     return ({
         item,
+        setItem,
         saveItem,
         removeItem,
         login,

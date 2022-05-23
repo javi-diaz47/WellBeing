@@ -13,6 +13,7 @@ function App() {
 
   const {
     user,
+    setUser,
     saveUser,
     removeUser,
     loading, 
@@ -27,9 +28,9 @@ function App() {
           <Route index element={ <Home user={user} login={login} />}></Route> 
           <Route path="contact-us" element={ <h2>Contact us</h2>} />
           <Route path="about-us" element={ <About/>} />
-          <Route path="login" element={<Login saveUser={saveUser} />} />
+          <Route path="login" element={<Login setUser={setUser} saveUser={saveUser} />} />
           <Route path="sign-up" element={<Signup/>} />
-          <Route path="cal-imc" element={<ImcCalculator />} />
+          <Route path="cal-imc" element={<ImcCalculator user={user} saveUser={saveUser} />} />
         </Route>
         {/* <Route path="teams" element={<Teams />}>
             <Route path=":teamId" element={<Team />} />

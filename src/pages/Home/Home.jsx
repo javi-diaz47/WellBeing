@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../../components/Button/Button";
-import logo from "../../logo.svg"
+import logo from "../../indoor-bike.svg"
 import "./Home.css";
 
 function Home(props){
