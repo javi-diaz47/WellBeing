@@ -5,7 +5,7 @@ import "./layout.css";
 
 function Layout(props){
     
-    const {user, login, removeUser} = props;
+    const {user, logged, removeUser} = props;
 
     const onLogout = () => {
         removeUser();
@@ -28,7 +28,7 @@ function Layout(props){
                     </ul>
                     <ul className="sign-up-login">
                         {
-                            !!login && !!user.name && user.name !== "" &&
+                            !!logged && !!user.name && user.name !== "" &&
                                 <>
                                     <h2 className="username">{`${user.name} ${user.lastname}`}</h2> 
                                     <button className="btn" onClick={onLogout}>logout</button>

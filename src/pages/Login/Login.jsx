@@ -1,48 +1,65 @@
 import React, { useEffect, useState } from "react";
+import { supabase } from "../../utils/supabaseClient";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../../Functions/loginUser";
 import "./Login.css";
 
 function Login(props){
 
-    const { setUser, saveUser} = props;
+    const {
+        user, 
+        setUser, 
+        saveUser, 
+        error, 
+        setError,
+        loading, 
+        setLoading
+    } =  props;
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    
     const navigate = useNavigate();
-    
-    const [error, setError] = useState(false);
-    
-    const getLogin = () => {
-        const {status, user} = loginUser(email, password);
-
-        if(!!status){
-            setUser(user);
+       useEffect(() => {
+        if(!!user.name){
             saveUser(user);
-            
-            if(!!error){
-                setError(false);
+            navigate("/");
+        }
+
+    }, [user])
+
+    const loginUser = async (ev) => {
+        ev.preventDefault();
+        setLoading(true);
+        try{
+            const { data: foundUser, error } = await supabase
+                .from('User')
+                .select()
+                .eq("email", email)
+                .eq("password", password)
+                .single()
+
+            if(error) throw error;
+
+            console.log(foundUser);
+
+            foundUser.measures = {
+                height: [],
+                weight: [],
+                imc: [],
+                dates: []
             }
 
-            navigate("/");
-            
-            setEmail("");
-            setPassword("");
-            console.log(user)
+            setUser(foundUser);
 
-        }else{
+            if(!!error) setError(false);
+
+        }catch(error){
+            console.error(error.error_description || error.message);
             setError(true);
         }
 
-
+        setLoading(false);
     }
-
-    const onSubmit = (ev) => {
-        ev.preventDefault();
-        getLogin();
-    }
-
 
     const emailOnChange = (ev) => {
         setEmail(ev.target.value);
@@ -52,15 +69,20 @@ function Login(props){
         setPassword(ev.target.value);
     }
 
-
     return (
         <section className="login">
-            <form onSubmit={onSubmit} className="neumorphism">
+            {
+                !!loading &&
+                <h2>Loading ...</h2>
+
+            }
+            <form onSubmit={loginUser} className="neumorphism">
                 <h2>Iniciar sesion</h2> 
                 <label name="email">
                     Correo
                     <input 
                         name="email" 
+                        value={email}
                         onChange={emailOnChange}
                         required
                     />
@@ -70,6 +92,7 @@ function Login(props){
                     <input 
                         name="password" 
                         type="password"
+                        value={password}
                         onChange={passwordOnChange}
                         required
                     />

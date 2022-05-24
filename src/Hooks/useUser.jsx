@@ -10,8 +10,9 @@ function useUser(){
         saveItem: saveUser,
         removeItem: removeUser,
         error,
+        setError,
         loading,
-        login,
+        setLoading,
     } = useLocalStorage('user', {
         name: "",
         lastname: "",
@@ -24,6 +25,11 @@ function useUser(){
             dates: [],
         }
     });
+    const logged = () => {
+        return !!user.name ? 
+            true : 
+            false;
+    }
 
     return ({
         user,
@@ -31,8 +37,10 @@ function useUser(){
         saveUser,
         removeUser,
         error,
+        setError,
         loading,
-        login,
+        setLoading,
+        logged,
     });
 
 }

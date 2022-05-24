@@ -1,0 +1,6 @@
+// export const REACT_APP_SUPABASE_URL="https://bjabyxsvdddwqobsogrb.supabase.co"
+// export const REACT_APP_SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqYWJ5eHN2ZGRkd3FvYnNvZ3JiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTMzNTU5NzMsImV4cCI6MTk2ODkzMTk3M30.8ZbBggDzqRH7hJWvEBMnh9WUe3cPpj16_RPk9YrguOQ"
+
+export const REACT_APP_SUPABASE_URL="asdf"
+export const REACT_APP_SUPABASE_ANON_KEY="asdf"
+
