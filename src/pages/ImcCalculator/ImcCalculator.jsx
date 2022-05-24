@@ -1,43 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./ImcCalculator.css"
 
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
 import { ImcResult } from "../../components/ImcResult/ImcResult";
 import { ImcCalculatorForm } from "../../components/ImcCalculatorForm/ImcCalculatorForm";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top' ,
-    },
-    title: {
-      display: true,
-      text: 'Historial de mediciones IMC',
-    }
-  },
-};
-
+import { LineChart } from "../../components/LineChart/LineChart";
 
 function ImcCalculator(props){
 
@@ -166,10 +132,11 @@ function ImcCalculator(props){
                 </article>
 
                 <article className="chart">
-                    <Line
-                        options={options} 
-                        data={data} 
+
+                   <LineChart
+                        data={data}
                     />
+
                 </article>
 
            </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,38 +22,30 @@ ChartJS.register(
 );
 
 const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top' ,
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'top',
+        },
+        title: {
+            display: true,
+            text: 'Historial de mediciones IMC',
+        }
     },
-    title: {
-      display: true,
-      text: 'Historial de mediciones IMC',
-    }
-  },
 };
 
 
-function LineChart(props) {
+function LineChart(props){
+    
+    const { data } = props;
 
-    const {x, y} = props;
+    return (
+        <Line
+            options={options} 
+            data={data} 
+        />
+    );
 
-    return <Line 
-        options={options} 
-        data={{
-            labels: [...x],
-            datasets: [
-                {
-                    label: 'Medicion IMC',
-                    data: [...y],
-                    borderColor: 'rgb(53, 162, 235)',
-                    backgroundColor: 'rgba(53, 162, 235, 0.5)',
-                    lineTension: 0.4
-                },
-            ],
-        }} 
-    />;
 }
 
-export { LineChart }
+export { LineChart };
