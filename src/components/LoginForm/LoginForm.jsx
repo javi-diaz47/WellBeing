@@ -29,6 +29,7 @@ function LoginForm(props){
                 Correo
                 <input 
                     name="email" 
+                    type="email"
                     value={email}
                     onChange={emailOnChange}
                     required

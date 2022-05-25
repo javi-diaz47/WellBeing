@@ -44,7 +44,17 @@ function App() {
               />} 
           />
 
-          <Route path="sign-up" element={<Signup/>} />
+          <Route 
+            path="sign-up" 
+            element={
+              <Signup
+                loading={loading}
+                setLoading={setLoading}
+                error={error}
+                setError={setError}
+              />
+              } 
+          />
           
           <Route 
             path="cal-imc" 

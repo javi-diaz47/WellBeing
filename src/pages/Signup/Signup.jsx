@@ -1,110 +1,77 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import { SignupForm } from "../../components/SignupForm/SignupForm";
+import { supabase } from "../../utils/supabaseClient";
 import "./Signup.css"
 
-function Signup(){
+function Signup(props){
+
+    const {loading, setLoading, error, setError} = props;
 
     const navigate = useNavigate();
 
-    const onSubmit = (ev) => {
+    const signupUser = async (ev) => {
         ev.preventDefault();
-        console.log({
-            name: firstName,
-            lastName: lastName,
-            email,
-            password,
-        })
-        setFirstName("");
-        setLastName("");
-        navigate("/login")
+        setLoading(true);
+        
+        try{
+
+            const { error } = await supabase
+                .from('User')
+                .insert([
+                    {
+                        name,
+                        lastname,
+                        email,
+                        password,
+                    },
+                ])
+
+            if(!!error) throw error;
+
+            console.log({
+                name: name,
+                lastmame: lastname,
+                email,
+                password,
+            });
+
+            setName("");
+            setLastname("");
+            setEmail("");
+            setPassword("");
+            
+            setLoading(false);
+            setError(false);
+
+            navigate("/login");
+
+        }catch(error){
+            console.error(error.error_description || error.message);
+            setError(true);
+        }
+
     }
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [name, setName] = useState('');
+    const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const [weight, setWeight] = useState('');
-    // const [height, setHeight] = useState('');
-
-    // registered | error | neutro
-    const state = useState("neutro")
-
-    const firstNameOnChange = (ev) => {
-        setFirstName(ev.target.value);
-    }
-
-    const lastNameOnChange = (ev) => {
-        setLastName(ev.target.value);
-    }
-  
-    const emailOnChange = (ev) => {
-        setEmail(ev.target.value);
-    }
-
-    const passwordOnChange = (ev) => {
-        setPassword(ev.target.value);
-    }
-
-//    const weightOnChange = (ev) => {
-//         setWeight(ev.target.value);
-//     }
-
-//     const heightOnChange = (ev) => {
-//         setHeight(ev.target.value);
-//     }
     
-
     return (
         <section className="sign-up">
-            <form onSubmit={onSubmit} className="neumorphism">
-                <h2>Registrame</h2> 
-                <label name="first-name">
-                    Nombres
-                    <input 
-                        name="first-name" 
-                        onChange={firstNameOnChange}
-                    />
-                </label>
-                <label name="last-name">
-                    Apellidos
-                    <input 
-                        name="last-name" 
-                        onChange={lastNameOnChange} 
-                    />
-                </label>
-                <label name="email">
-                    Correo
-                    <input 
-                        name="email" 
-                        onChange={emailOnChange}
-                    />
-                </label>
-                <label name="password">
-                    Contrasena
-                    <input 
-                        name="password"
-                        type="password" 
-                        onChange={passwordOnChange}
-                    />
-                </label>
-                {/* <label name="weight">
-                    Peso (kg)
-                    <input 
-                        name="weight"
-                        onChange={weightOnChange}
-                    />
-                </label>
-                <label name="height">
-                    Altura (m)
-                    <input 
-                        name="height"
-                        onChange={heightOnChange}
-                    />
-                </label> */}
 
-                <button type="submit" className="btn">Registrame</button>
-
-           </form>
+            <SignupForm 
+                name={name} 
+                setName={setName}
+                lastname={lastname}
+                setLastname={setLastname}
+                email={email}
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
+                onSubmit={signupUser} 
+            />
 
         </section> 
     );

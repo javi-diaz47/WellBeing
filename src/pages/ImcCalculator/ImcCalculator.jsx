@@ -95,6 +95,7 @@ function ImcCalculator(props){
       
     }
 
+
     useEffect(() => {
         setData({
             labels: user.measures.dates,
@@ -111,8 +112,6 @@ function ImcCalculator(props){
         })
 
     }, [user]);
-
-    
 
     return (
         <section className="imc-calculator">
@@ -139,7 +138,9 @@ function ImcCalculator(props){
                     />
 
                 </article>
-                <button className="btn" onClick={saveUserDB}>Actualizar cambios</button>
+                
+                <button className="btn update-db" onClick={saveUserDB}>Actualizar cambios</button>
+
            </div>
         </section>
     )
