@@ -11,6 +11,7 @@ function ImcCalculator(props){
         user, 
         setUser,
         saveUser, 
+        saveUserDB,
         error, 
         setError 
     } = props;
@@ -138,7 +139,7 @@ function ImcCalculator(props){
                     />
 
                 </article>
-
+                <button className="btn" onClick={saveUserDB}>Actualizar cambios</button>
            </div>
         </section>
     )

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Loading } from "../../components/Loading/Loading";
+import { LoginForm } from "../../components/LoginForm/LoginForm";
 import "./Login.css";
 
 function Login(props){
@@ -61,55 +63,20 @@ function Login(props){
         setLoading(false);
     }
 
-    const emailOnChange = (ev) => {
-        setEmail(ev.target.value);
-    }
-
-    const passwordOnChange = (ev) => {
-        setPassword(ev.target.value);
-    }
-
     return (
         <section className="login">
-            {
-                !!loading &&
-                <h2>Loading ...</h2>
 
-            }
-            <form onSubmit={loginUser} className="neumorphism">
-                <h2>Iniciar sesion</h2> 
-                <label name="email">
-                    Correo
-                    <input 
-                        name="email" 
-                        value={email}
-                        onChange={emailOnChange}
-                        required
-                    />
-                </label>
-                <label name="password">
-                    Contrasena
-                    <input 
-                        name="password" 
-                        type="password"
-                        value={password}
-                        onChange={passwordOnChange}
-                        required
-                    />
-                </label>
-                
-                <button type="submit" className="btn">Iniciar sesion</button>
-                
-                <p>No te has registrado aun?
-                    <Link to="/sign-up"> Registrarme</Link>
-                </p>
-                {
-                    !!error &&
-                    <p className="error">
-                        Correo o contrasena incorrectos
-                    </p>
-                }
-          </form>
+            <Loading loading={loading} />
+
+            <LoginForm 
+                email={email} 
+                setEmail={setEmail} 
+                password={password}
+                setPassword={setPassword}
+                loginUser={loginUser}
+                error={error}
+            />
+
        </section> 
     );
 }

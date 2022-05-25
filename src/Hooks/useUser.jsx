@@ -3,7 +3,6 @@ import { useLocalStorage } from "./useLocalStorage";
 
 function useUser(){
 
-
     const {
         item: user,
         setItem: setUser,
