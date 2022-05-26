@@ -4,8 +4,8 @@ import { UNDER_WEIGHT, ADECUATE_WEIGHT } from "./TypeOfWeight";
 const getUserIdealWeightRange = (height) => {
 
     return {
-        MinIdealWeight: UNDER_WEIGHT * height * height,
-        MaxIdealWeight: ADECUATE_WEIGHT * height * height
+        minIdealWeight: (UNDER_WEIGHT * height * height).toFixed(3),
+        maxIdealWeight: (ADECUATE_WEIGHT * height * height).toFixed(3)
     }
 
 }

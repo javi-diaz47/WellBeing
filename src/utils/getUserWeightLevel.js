@@ -1,7 +1,7 @@
 import { WEIGHT_LEVELS } from "./weightLevels";
 import { UNDER_WEIGHT, ADECUATE_WEIGHT, OVERWEIGHT } from "./TypeOfWeight";
 
-const getUserWeightLevelIndex = () => {
+const getUserWeightLevelIndex = (health) => {
 
     if(health > 0 && health < UNDER_WEIGHT){
         return  0;

@@ -12,6 +12,7 @@ function Signup(props){
 
     const signupUser = async (ev) => {
         ev.preventDefault();
+        console.log(ev.target)
         setLoading(true);
         
         try{
