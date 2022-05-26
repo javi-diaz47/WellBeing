@@ -1,14 +1,18 @@
 import React from "react";
+import "./Loading.css";
 
 function Loading(props){
     
-    const {loading} = props;
-    
+    const { loading } = props;
 
     return (
-        !!loading &&
-        <h2>Loadding</h2>
-    );
+        !! loading &&
+        <div className="loading">
+            <div className="lds-heart">
+                <div></div>
+            </div>
+        </div>
+   );
 
 }
 

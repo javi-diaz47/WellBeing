@@ -29,13 +29,13 @@ function Layout(props){
                 <nav className="nav">
                     <ul className="pages">
                         <li className="highlighted">
-                            <Link to="/" > Home </Link>
+                            <Link to="/" > Inicio </Link>
                         </li>
                         <li>
-                            <Link to="contact-us"> Contact us </Link>
+                            <Link to="contact-us"> Contactanos </Link>
                         </li>
                         <li>
-                            <Link to="about-us"> About us </Link>
+                            <Link to="about-us"> Nosotros </Link>
                         </li>
                     </ul>
                     <ul className="sign-up-login">

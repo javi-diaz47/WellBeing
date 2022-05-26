@@ -8,11 +8,12 @@ function Home(props){
     const { user, loading, isLogged } = props;
     return (
        <div className="home">
-           {
-               !!loading &&
-               <h2>Cargando</h2>
-           }
-           {
+            {
+                !!Loading &&
+                <Loading loading={loading}/>
+            }
+
+            {
                !loading &&
                 <section className="wrapper">
                     <main>

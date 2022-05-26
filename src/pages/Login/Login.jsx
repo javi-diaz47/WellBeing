@@ -89,7 +89,10 @@ function Login(props){
     return (
         <section className="login">
 
-            <Loading loading={loading} />
+            {
+                !!Loading &&
+                <Loading loading={loading}/>
+            }
 
             <LoginForm 
                 email={email} 
