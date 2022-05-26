@@ -32,6 +32,7 @@ function Login(props){
     const loginUser = async (ev) => {
         ev.preventDefault();
         setLoading(true);
+
         try{
             const { data: foundUser, error } = await supabase
                 .from('User')
@@ -44,11 +45,33 @@ function Login(props){
 
             console.log(foundUser);
 
+            const { data: measures, measuresError} = await supabase
+                .from('Measures')
+                .select()
+                .eq("userId", foundUser.id)
+
+            console.log(measures);
+
+            const height = [];
+            const weight = [];
+            const imc = [];
+            const dates = [];
+
+            for(const measure of measures){
+                weight.push(measure.weight);
+                height.push(measure.height);
+                imc.push(measure.imc);
+                dates.push(measure.date);
+            }
+
+            console.log(measuresError);
+
+
             foundUser.measures = {
-                height: [],
-                weight: [],
-                imc: [],
-                dates: []
+                height,
+                weight,
+                imc,
+                dates
             }
 
             setUser(foundUser);

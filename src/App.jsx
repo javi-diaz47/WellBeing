@@ -16,19 +16,39 @@ function App() {
     setUser,
     saveUser,
     removeUser,
+    saveMeasuresDB,
     error, 
     setError,
     loading, 
     setLoading,
-    logged
+    isLogged,
+    setIsLogged,
   } = useUser();
-  
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout user={user} logged={logged} removeUser={removeUser} />}>
-          
-          <Route index element={ <Home user={user} logged={logged} />}></Route> 
+        <Route 
+          path="/" 
+          element={
+            <Layout 
+              user={user}
+              setUser={setUser} 
+              isLogged={isLogged}
+              setIsLogged={setIsLogged} 
+              removeUser={removeUser} 
+            />
+          }
+        >
+          <Route 
+            index 
+            element={ 
+              <Home 
+                user={user} 
+                isLogged={isLogged}
+              />
+            }
+          />
           
           <Route 
             path="login" 
@@ -63,6 +83,7 @@ function App() {
                 user={user} 
                 setUser={setUser}
                 saveUser={saveUser} 
+                saveMeasuresDB={saveMeasuresDB}
                 error={error}
                 setError={setError}
               />} 

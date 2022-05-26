@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
+import { supabase } from "../utils/supabaseClient";
+import { USER_SCHEME } from "../utils/userScheme";
+
+
 
 function useUser(){
 
@@ -12,33 +16,57 @@ function useUser(){
         setError,
         loading,
         setLoading,
-    } = useLocalStorage('user', {
-        name: "",
-        lastname: "",
-        email: "",
-        password: "",
-        measures: {
-            height: [],
-            weight: [],
-            imc: [],
-            dates: [],
-        }
-    });
+    } = useLocalStorage('user', USER_SCHEME);
+
+    useEffect(() => {
+        logged();
+    }, [user])
+
     const logged = () => {
-        return !!user.name ? 
-            true : 
-            false;
+        if(!!user.name){
+            setIsLogged(true);
+        }else{
+            setIsLogged(false);
+        }
     }
+
+    const [isLogged, setIsLogged] = useState(false);
+
+    const saveMeasuresDB = async (weight, height, imc, date) => {
+        try{
+            const { error } = await supabase
+                .from('Measures')
+                .insert([
+                    {
+                        weight,
+                        height,
+                        imc,
+                        date,
+                        userId: user.id
+                    },
+                ])
+
+            if(!!error) throw error;
+
+        }catch(error){
+            console.error(error.error_description || error.message);
+        }
+
+    }
+
 
     return ({
         user,
         setUser,
         saveUser,
         removeUser,
+        saveMeasuresDB,
         error,
         setError,
         loading,
         setLoading,
+        isLogged,
+        setIsLogged,
         logged,
     });
 

@@ -1,14 +1,26 @@
-import react, { useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, Link, Outlet } from "react-router-dom";
+import { USER_SCHEME } from "../../utils/userScheme";
 import { Button } from "../Button/Button";
 import "./layout.css";
 
 function Layout(props){
     
-    const {user, logged, removeUser} = props;
+    const {
+        user, 
+        setUser, 
+        isLogged, 
+        setIsLogged, 
+        removeUser
+    } = props;
+
+    const navigate = useNavigate();
 
     const onLogout = () => {
         removeUser();
+        setUser(USER_SCHEME);
+        setIsLogged(false);
+        navigate("/");
     }
 
     return (
@@ -28,7 +40,7 @@ function Layout(props){
                     </ul>
                     <ul className="sign-up-login">
                         {
-                            !!logged && !!user.name && user.name !== "" &&
+                            !!isLogged && !!user.name && user.name !== "" &&
                                 <>
                                     <h2 className="username">{`${user.name} ${user.lastname}`}</h2> 
                                     <button className="btn" onClick={onLogout}>logout</button>

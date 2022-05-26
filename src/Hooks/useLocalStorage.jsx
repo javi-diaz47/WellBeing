@@ -33,6 +33,8 @@ function useLocalStorage(itemName, initValue){
 
     const removeItem = () => {
         localStorage.removeItem(itemName);
+        console.log("deleted")
+        console.log(localStorage)
     }
 
     return ({

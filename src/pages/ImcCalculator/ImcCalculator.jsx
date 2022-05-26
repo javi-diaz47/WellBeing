@@ -5,13 +5,15 @@ import { ImcResult } from "../../components/ImcResult/ImcResult";
 import { ImcCalculatorForm } from "../../components/ImcCalculatorForm/ImcCalculatorForm";
 import { LineChart } from "../../components/LineChart/LineChart";
 
+
+
 function ImcCalculator(props){
 
     const { 
         user, 
         setUser,
         saveUser, 
-        saveUserDB,
+        saveMeasuresDB,
         error, 
         setError 
     } = props;
@@ -62,8 +64,8 @@ function ImcCalculator(props){
             imc.push(newImc);
             
             const dates = user.measures.dates;
-            const date = new Date(Date.now());
-            dates.push(date.toLocaleDateString());
+            const date = (new Date(Date.now())).toLocaleDateString();
+            dates.push(date);
 
             const newHeight = user.measures.height;
             newHeight.push(+height);
@@ -85,6 +87,10 @@ function ImcCalculator(props){
                 }
             }
             
+            
+            saveMeasuresDB((+weight), (+height), newImc, date);
+
+           
             setUser(newUser)
             saveUser(newUser);
 
@@ -94,7 +100,6 @@ function ImcCalculator(props){
 
       
     }
-
 
     useEffect(() => {
         setData({
@@ -139,8 +144,6 @@ function ImcCalculator(props){
 
                 </article>
                 
-                <button className="btn update-db" onClick={saveUserDB}>Actualizar cambios</button>
-
            </div>
         </section>
     )
