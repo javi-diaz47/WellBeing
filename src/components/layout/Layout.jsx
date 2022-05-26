@@ -48,7 +48,7 @@ function Layout(props){
                                 
                                 ||
                                 
-                                <Button text="Iniciar secion" link="login"/>
+                                <Button text="Iniciar sesion" link="login"/>
                         }
 
                     </ul>

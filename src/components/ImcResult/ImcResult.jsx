@@ -1,9 +1,9 @@
 import React from "react";
-import { getUserWeightState } from "../../utils/getUserWeightState";
+import { getUserWeightLevel } from "../../utils/getUserWeightLevel";
 
 function ImcResult({health}){
     
-    const result = getUserWeightState(health);
+    const result = getUserWeightLevel(health);
     
     return (
         <div className="imc-result neumorphism">
@@ -12,7 +12,7 @@ function ImcResult({health}){
                 <>
                     <h2>Resultados</h2>
                     <p>Tu IMC es de {health}</p>
-                    <p>{result}</p>
+                    <p>Por lo tanto estas en el Nivel de peso: {result}</p>
                 </>
            }
        </div>

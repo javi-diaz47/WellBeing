@@ -5,7 +5,9 @@ import { ImcResult } from "../../components/ImcResult/ImcResult";
 import { ImcCalculatorForm } from "../../components/ImcCalculatorForm/ImcCalculatorForm";
 import { LineChart } from "../../components/LineChart/LineChart";
 
-
+import { sendForm } from "@emailjs/browser";
+import { getUserWeightLevel, getUserWeightLevelIndex } from "../../utils/getUserWeightLevel";
+import { getUserIdealWeightRange } from "../../utils/getUserIdealWeightRange";
 
 function ImcCalculator(props){
 
@@ -90,7 +92,48 @@ function ImcCalculator(props){
             
             saveMeasuresDB((+weight), (+height), newImc, date);
 
-           
+            
+            const oldWeightLevel = getUserWeightLevelIndex(user.measures.imc[user.measures.imc.length - 2]);
+            const newWeightLevel = getUserWeightLevelIndex(user.measures.imc[user.measures.imc.length - 1]);
+
+            if(oldWeightLevel !== newWeightLevel){
+                
+                let message = "";
+                
+                if(newWeightLevel === 0){
+                    message = "ups, estas bajo de peso, pero no te preocupes nosotros sabes que puedes con esto y muy pronto alcanzaras tu peso ideal";
+                }else if(newWeightLevel === 1){
+                    message = "¡Lo lograste! Haz alcanzado tu Peso Ideal!";
+                }else if(newWeightLevel === 2 && oldWeightLevel === 3){
+                    message = "¡Muy bien! Ya estas cerca de llegar a tu peso ideal, Tu puedes!";
+                }else if(newWeightLevel > oldWeightLevel){
+                    message = "Subiste un poco de peso. Pero no desfallezcas ¡Nosotros confiamos en que puedes lograr tu objetivo!";
+                }
+
+                const userIdealWeightRange = getUserIdealWeightRange((+height));
+                
+                sendForm(
+                    'service_vg0ceee', 
+                    'template_sijx8ib', 
+                        {
+                            name: user.name,
+                            email: user.email,
+                            oldImc: user.measures.imc[user.measures.imc.length - 2],
+                            newImc,
+                            oldWeightLevel,
+                            newWeightLevel,
+                            message,
+                            minIdealWeight: userIdealWeightRange.minIdealWeight,
+                            maxIdealWeight: userIdealWeightRange.maxIdealWeight
+                        }, 
+                    'WmBCgd6LFV1-TOG1O'
+                ).then((result) => {
+                    console.log(result.text);
+                    }, (error) => {
+                    console.log(error.text);
+                });
+            }
+               
             setUser(newUser)
             saveUser(newUser);
 
