@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, Link, Outlet } from "react-router-dom";
 import { USER_SCHEME } from "../../utils/userScheme";
+import { BurgerButton } from "../BurgetButton/BurgerButton";
 import { Button } from "../Button/Button";
 import "./layout.css";
 
@@ -43,7 +44,7 @@ function Layout(props){
                             !!isLogged && !!user.name && user.name !== "" &&
                                 <>
                                     <h2 className="username">{`${user.name} ${user.lastname}`}</h2> 
-                                    <button className="btn" onClick={onLogout}>logout</button>
+                                    <BurgerButton />
                                 </>
                                 
                                 ||

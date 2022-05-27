@@ -11,7 +11,7 @@ nav {
     grid-template-columns: 1fr 1fr;
 }
 
-.nav ul {
+.pages, .sign-up-login {
     padding: 0;
     display: flex;
     gap: 7%;
@@ -50,12 +50,16 @@ nav {
     margin: 0;
 }
 
-@media (max-width: 572px) {
+@media (max-width: 600px) {
     
-    nav {
+    /* nav {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
-    }   
+    }    */
+    .username{
+        color: transparent;
+    }
+
    .sign-up-login{
         justify-content: left;
         margin: 0;

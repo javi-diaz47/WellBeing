@@ -9,6 +9,7 @@ import { Signup } from './pages/Signup/Signup'
 import { useUser } from './Hooks/useUser'
 import { ImcCalculator } from './pages/ImcCalculator/ImcCalculator'
 import { ContactUs } from './pages/ContactUs/ContactUs'
+import { BurgerButton } from './components/BurgetButton/BurgerButton'
 
 function App() {
 
@@ -98,7 +99,7 @@ function App() {
               />
             } 
           />
-
+          
         </Route>
       </Routes>
     </BrowserRouter>
