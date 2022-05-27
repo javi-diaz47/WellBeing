@@ -77,6 +77,7 @@ function ImcCalculator(props){
 
             
             const newUser = {
+                id: user.id,
                 name: user.name,
                 lastname: user.lastname,
                 email: user.email,
@@ -89,8 +90,7 @@ function ImcCalculator(props){
                 }
             }
             
-            
-            saveMeasuresDB((+weight), (+height), newImc, date);
+            saveMeasuresDB((+weight), (+height), newImc, date, user.id);
 
             if(user.measures.weight.length > 1){
 

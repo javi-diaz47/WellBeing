@@ -43,14 +43,14 @@ function Login(props){
 
             if(error) throw error;
 
-            console.log(foundUser);
+            // console.log(foundUser);
 
             const { data: measures, measuresError} = await supabase
                 .from('Measures')
                 .select()
                 .eq("userId", foundUser.id)
 
-            console.log(measures);
+            // console.log(measures);
 
             const height = [];
             const weight = [];
@@ -64,8 +64,7 @@ function Login(props){
                 dates.push(measure.date);
             }
 
-            console.log(measuresError);
-
+            // console.log(measuresError);
 
             foundUser.measures = {
                 height,

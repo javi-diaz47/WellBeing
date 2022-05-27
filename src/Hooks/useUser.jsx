@@ -32,7 +32,7 @@ function useUser(){
 
     const [isLogged, setIsLogged] = useState(false);
 
-    const saveMeasuresDB = async (weight, height, imc, date) => {
+    const saveMeasuresDB = async (weight, height, imc, date, userId) => {
         try{
             const { error } = await supabase
                 .from('Measures')
@@ -42,7 +42,7 @@ function useUser(){
                         height,
                         imc,
                         date,
-                        userId: user.id
+                        userId
                     },
                 ])
 
