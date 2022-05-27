@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../../components/Button/Button";
 import logo from "../../indoor-bike.svg"
+import { Loading } from "../../components/Loading/Loading";
 import "./Home.css";
 
 function Home(props){

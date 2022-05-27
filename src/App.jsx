@@ -8,6 +8,7 @@ import { Login } from './pages/Login/Login'
 import { Signup } from './pages/Signup/Signup'
 import { useUser } from './Hooks/useUser'
 import { ImcCalculator } from './pages/ImcCalculator/ImcCalculator'
+import { ContactUs } from './pages/ContactUs/ContactUs'
 
 function App() {
 
@@ -89,8 +90,14 @@ function App() {
               />} 
           />
 
-          <Route path="contact-us" element={ <h2>Contact us</h2>} />
-          <Route path="about-us" element={ <About/>} />
+          <Route path="contact-us" 
+            element={ 
+              <ContactUs 
+                loading={loading} 
+                setLoading={setLoading}
+              />
+            } 
+          />
 
         </Route>
       </Routes>

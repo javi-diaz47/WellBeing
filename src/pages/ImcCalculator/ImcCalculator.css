@@ -1,5 +1,5 @@
 .imc-calculator{
-   height: 100vh;
+    height: 100vh;
     margin-top: 2rem;
     display: flex;
     justify-content: center;    
@@ -102,3 +102,27 @@
 		transform: translatey(0px);
 	}
 }
+
+@media (max-width: 1280px) {
+    .calculator-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "chart"
+                             "calculator"
+                             "result";
+    } 
+    .chart {
+        grid-area: chart;
+    } 
+
+    .imc-calculator {
+        grid-area: calculator;
+    }
+
+    .imc-result {
+        grid-area: result;
+    }
+
+
+}
+

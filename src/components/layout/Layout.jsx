@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate, Link, Outlet } from "react-router-dom";
 import { USER_SCHEME } from "../../utils/userScheme";
 import { Button } from "../Button/Button";
@@ -35,7 +35,7 @@ function Layout(props){
                             <Link to="contact-us"> Contactanos </Link>
                         </li>
                         <li>
-                            <Link to="about-us"> Nosotros </Link>
+                            <a href="">Nosotros</a>
                         </li>
                     </ul>
                     <ul className="sign-up-login">

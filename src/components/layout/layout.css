@@ -21,20 +21,24 @@ nav {
     list-style: none;
     display: inline-block;
     /* margin: 0 5%; */
+}
 
+.nav .pages li:hover a{
+    color: var(--yellow);
+    font-size: 1.2rem;
 }
 
 .pages a {
     font-family: sans-serif;
     text-decoration: none; 
     color: black;
+    font-size: 1rem;
+    transition: .3s;
 }
 
 .highlighted{
     font-weight: bold;
 }
-
-
 
 .sign-up-login{
     display: flex;
@@ -45,4 +49,18 @@ nav {
 .sign-up-login .username{
     margin: 0;
 }
+
+@media (max-width: 572px) {
+    
+    nav {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }   
+   .sign-up-login{
+        justify-content: left;
+        margin: 0;
+    }
+
+}
+
 
