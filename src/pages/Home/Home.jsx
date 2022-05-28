@@ -26,7 +26,7 @@ function Home(props){
                         </p>
                         {
                             !!isLogged && !!user.name && user.name !== "" &&
-                            <Button text="Calcualr mi IMC" link="cal-imc"/>
+                            <Button text="Calcular mi IMC" link="cal-imc"/>
                             
                             ||
 

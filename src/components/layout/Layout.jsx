@@ -36,7 +36,7 @@ function Layout(props){
                             <Link to="contact-us"> Contactanos </Link>
                         </li>
                         <li>
-                            <a>Nosotros</a>
+                            <Link to="about-us">Nosotros</Link>
                         </li>
                     </ul>
                     <ul className="sign-up-login">

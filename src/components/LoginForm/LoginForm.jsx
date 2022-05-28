@@ -37,7 +37,7 @@ function LoginForm(props){
             </label>
 
             <label name="password">
-                Contrasena
+                Contraseña
                 <input 
                     name="password" 
                     type="password"
