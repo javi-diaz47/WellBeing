@@ -68,7 +68,9 @@ function ImcCalculator(props){
             imc.push(newImc);
             
             const dates = user.measures.dates;
-            const date = (new Date(Date.now())).toLocaleDateString();
+            let date = new Date(Date.now());
+            date = `${date.getFullYear()}-${(date.getMonth()+1)}-${date.getDate()}` 
+            console.log(date)
             dates.push(date);
 
             const newHeight = user.measures.height;
