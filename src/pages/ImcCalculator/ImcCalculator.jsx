@@ -8,6 +8,7 @@ import { LineChart } from "../../components/LineChart/LineChart";
 import { send } from "@emailjs/browser";
 import { getUserWeightLevel, getUserWeightLevelIndex } from "../../utils/getUserWeightLevel";
 import { getUserIdealWeightRange } from "../../utils/getUserIdealWeightRange";
+import { supabase } from "../../utils/supabaseClient";
 
 function ImcCalculator(props){
 
@@ -15,7 +16,10 @@ function ImcCalculator(props){
         user, 
         setUser,
         saveUser, 
+        removeUser,
         saveMeasuresDB,
+        loading,
+        setLoading,
         error, 
         setError 
     } = props;
@@ -48,9 +52,6 @@ function ImcCalculator(props){
         setWeight(ev.target.value);
     }
 
-    const [notification, setNotification] = useState("")
-    
-    
     const MAX_HEIGHT = 2.8;
     const MIN_HEIGHT = 0.546;
     const MAX_WEIGHT = 636;
@@ -70,7 +71,6 @@ function ImcCalculator(props){
             const dates = user.measures.dates;
             let date = new Date(Date.now());
             date = `${date.getFullYear()}-${(date.getMonth()+1)}-${date.getDate()}` 
-            console.log(date)
             dates.push(date);
 
             const newHeight = user.measures.height;
@@ -100,21 +100,26 @@ function ImcCalculator(props){
             if(user.measures.weight.length > 1 && user.notification === "true"){
                 const oldWeightLevel = getUserWeightLevel(user.measures.imc[user.measures.imc.length - 2]);
                 const newWeightLevel = getUserWeightLevel(user.measures.imc[user.measures.imc.length - 1]);
+                
+                const oldWeightLevelIndex = getUserWeightLevelIndex(user.measures.imc[user.measures.imc.length - 2]);
+                const newWeightLevelIndex = getUserWeightLevelIndex(user.measures.imc[user.measures.imc.length - 1]);
+
 
                 if(oldWeightLevel !== newWeightLevel){
                     
                     let message = "";
                     
-                    if(newWeightLevel === 0){
+                    if(newWeightLevelIndex == 0){
                         message = "ups, estas bajo de peso, pero no te preocupes nosotros sabemos \n que puedes con esto y muy pronto alcanzaras tu peso ideal";
-                    }else if(newWeightLevel === 2 && oldWeightLevel === 3){
+                    }else if(newWeightLevelIndex == 2 && oldWeightLevel == 3){
                         message = "¡Muy bien! Ya estas cerca de llegar a tu peso ideal, ¡Tu puedes!";
-                    }else if(newWeightLevel > oldWeightLevel){
-                        message = "Subiste un poco de peso. Pero no desfallezcas \n ¡Nosotros confiamos en que puedes lograr tu objetivo!";
-                    }else if(newWeightLevel === 1){
-                        message = "¡Lo lograste! Haz alcanzado tu Peso Ideal!";
                     }
-
+                    
+                    if(newWeightLevelIndex == 1){
+                        message = "¡Lo lograste! Haz alcanzado tu Peso Ideal!";
+                    }else if(newWeightLevelIndex > oldWeightLevelIndex){
+                        message = "Subiste un poco de peso. Pero no desfallezcas \n ¡Nosotros confiamos en que puedes lograr tu objetivo!";
+                    }
                     const { minIdealWeight, maxIdealWeight} = getUserIdealWeightRange((+height));
                     send(
                         'service_vg0ceee', 
@@ -151,7 +156,7 @@ function ImcCalculator(props){
       
     }
 
-    const sendNotification = (notification) => {
+    const sendNotification = async (notification) => {
         
         const newUser = {
             id: user.id,
@@ -162,9 +167,35 @@ function ImcCalculator(props){
             notification: notification,
             measures: user.measures
         }
+        
+        try{
 
-        setUser(newUser);
-        saveUser(newUser);
+            const { error } = await supabase
+                .from('User')
+                .update([
+                    {
+                        name: newUser.name,
+                        lastname: newUser.lastname,
+                        email: newUser.email,
+                        password: newUser.password,
+                        notification: newUser.notification
+                   },
+                ])
+                .eq('id', user.id)
+
+            if(!!error) throw error;
+
+            removeUser();
+            setUser(newUser)
+            saveUser(newUser)
+
+            setLoading(false);
+            setError(false);
+
+        }catch(error){
+            console.error(error.error_description || error.message);
+            setError(true);
+        }
 
     }
 

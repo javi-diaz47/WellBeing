@@ -86,6 +86,9 @@ function App() {
                 user={user} 
                 setUser={setUser}
                 saveUser={saveUser} 
+                removeUser={removeUser}
+                setLoading={setLoading}
+                loading={loading}
                 saveMeasuresDB={saveMeasuresDB}
                 error={error}
                 setError={setError}
