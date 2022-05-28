@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import { Loading } from "../../components/Loading/Loading";
 import { SignupForm } from "../../components/SignupForm/SignupForm";
 import { supabase } from "../../utils/supabaseClient";
 import "./Signup.css"
@@ -12,7 +13,6 @@ function Signup(props){
 
     const signupUser = async (ev) => {
         ev.preventDefault();
-        // console.log(ev.target)
         setLoading(true);
         
         try{
@@ -61,7 +61,10 @@ function Signup(props){
     
     return (
         <section className="sign-up">
-
+            {
+                !!Loading &&
+                <Loading loading={loading}/>
+            }
             <SignupForm 
                 name={name} 
                 setName={setName}

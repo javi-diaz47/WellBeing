@@ -3,6 +3,7 @@ const USER_SCHEME = {
     lastname: "",
     email: "",
     password: "",
+    notification: "ask",
     measures: {
         height: [],
         weight: [],

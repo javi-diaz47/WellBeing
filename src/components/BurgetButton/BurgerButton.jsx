@@ -22,6 +22,10 @@ function BurgerButton(props){
         setOnMenu(!onMenu);
     }
 
+    const onLogoutAndClose = () => {
+        onLogout();
+        onMenuChange();
+    }
 
 
     return (
@@ -36,11 +40,10 @@ function BurgerButton(props){
             <div ref={userMenu} className="user-menu-wrapper">
                 <ul>
                     <li>
-                        <Link to="/">Editar Perfil</Link>
+                        <Link to="/edit-user-profile" onClick={() => onMenuChange()}>Editar Perfil</Link>
                     </li>     
                     <li>
-                        <a className="on-logout" onClick={ onLogout }>Salir del Perfil</a>
-
+                        <a className="on-logout" onClick={ onLogoutAndClose }>Salir del Perfil</a>
                     </li>     
                 </ul> 
             </div> 

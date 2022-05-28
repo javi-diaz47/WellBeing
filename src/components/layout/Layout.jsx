@@ -44,7 +44,7 @@ function Layout(props){
                             !!isLogged && !!user.name && user.name !== "" &&
                                 <>
                                     <h2 className="username">{`${user.name} ${user.lastname}`}</h2> 
-                                    <BurgerButton />
+                                    <BurgerButton onLogout={onLogout} />
                                 </>
                                 
                                 ||

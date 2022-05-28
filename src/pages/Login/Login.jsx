@@ -75,6 +75,7 @@ function Login(props){
 
             setUser(foundUser);
 
+
             if(!!error) setError(false);
 
         }catch(error){

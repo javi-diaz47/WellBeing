@@ -10,6 +10,7 @@ import { useUser } from './Hooks/useUser'
 import { ImcCalculator } from './pages/ImcCalculator/ImcCalculator'
 import { ContactUs } from './pages/ContactUs/ContactUs'
 import { BurgerButton } from './components/BurgetButton/BurgerButton'
+import { EditUserProfile } from './pages/EditUserProfile/EditUserProfile.EditUserProfile'
 
 function App() {
 
@@ -100,9 +101,26 @@ function App() {
             } 
           />
 
-          <Route path="about-us"
+          <Route 
+            path="about-us"
             element={
               <About />
+            }
+          />
+
+          <Route 
+            path="edit-user-profile"
+            element={
+              <EditUserProfile
+                user={user} 
+                setUser={setUser}
+                saveUser={saveUser}
+                removeUser={removeUser}
+                loading={loading}
+                setLoading={setLoading}
+                error={error}
+                setError={setError}
+              />
             }
           />
           

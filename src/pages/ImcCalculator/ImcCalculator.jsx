@@ -48,6 +48,8 @@ function ImcCalculator(props){
         setWeight(ev.target.value);
     }
 
+    const [notification, setNotification] = useState("")
+    
     
     const MAX_HEIGHT = 2.8;
     const MIN_HEIGHT = 0.546;
@@ -82,6 +84,7 @@ function ImcCalculator(props){
                 lastname: user.lastname,
                 email: user.email,
                 password: user.password,
+                notification: user.notification,
                 measures: {
                     height: newHeight,
                     weight: newWeight,
@@ -92,8 +95,7 @@ function ImcCalculator(props){
             
             saveMeasuresDB((+weight), (+height), newImc, date, user.id);
 
-            if(user.measures.weight.length > 1){
-
+            if(user.measures.weight.length > 1 && user.notification === "true"){
                 const oldWeightLevel = getUserWeightLevel(user.measures.imc[user.measures.imc.length - 2]);
                 const newWeightLevel = getUserWeightLevel(user.measures.imc[user.measures.imc.length - 1]);
 
@@ -110,7 +112,6 @@ function ImcCalculator(props){
                     }else if(newWeightLevel === 1){
                         message = "¡Lo lograste! Haz alcanzado tu Peso Ideal!";
                     }
-
 
                     const { minIdealWeight, maxIdealWeight} = getUserIdealWeightRange((+height));
                     send(
@@ -134,9 +135,9 @@ function ImcCalculator(props){
                         console.log(error.text);
                     });
                 }
-                
 
             }
+
               
             setUser(newUser);
             saveUser(newUser);
@@ -147,6 +148,24 @@ function ImcCalculator(props){
 
       
     }
+
+    const sendNotification = (notification) => {
+        
+        const newUser = {
+            id: user.id,
+            name: user.name,
+            lastname: user.lastname,
+            email: user.email,
+            password: user.password,
+            notification: notification,
+            measures: user.measures
+        }
+
+        setUser(newUser);
+        saveUser(newUser);
+
+    }
+
 
     useEffect(() => {
         setData({
@@ -164,6 +183,7 @@ function ImcCalculator(props){
         })
 
     }, [user]);
+
 
     return (
         <section className="imc-calculator">
@@ -190,7 +210,21 @@ function ImcCalculator(props){
                     />
 
                 </article>
-                
+                {
+                    user.notification === "ask" &&
+                    <article className="notification">
+                        <div className="notification-wrapper neumorphism">
+                            <h2>
+                                Deseas recibir notificaciones de Weight Tracker
+                            </h2>
+                            <div className="notification-button-wrapper">
+                                <button className="btn" onClick={() => sendNotification("true")}>Aceptar</button>
+                                <button className="btn" onClick={() => sendNotification("false")}>Denegar</button>
+                            </div>
+                        </div>
+                  </article>
+ 
+                }
            </div>
         </section>
     )
