@@ -55,7 +55,7 @@ function ImcCalculator(props){
     const MIN_HEIGHT = 0.546;
     const MAX_WEIGHT = 636;
 
-    const calculateImc = (ev) => {
+    const calculateImc = async (ev) => {
         ev.preventDefault();
         
         if(height > MIN_HEIGHT && height < MAX_HEIGHT && weight < MAX_WEIGHT){
@@ -93,7 +93,7 @@ function ImcCalculator(props){
                 }
             }
             
-            saveMeasuresDB((+weight), (+height), newImc, date, user.id);
+            await saveMeasuresDB((+weight), (+height), newImc, date, user.id);
 
             if(user.measures.weight.length > 1 && user.notification === "true"){
                 const oldWeightLevel = getUserWeightLevel(user.measures.imc[user.measures.imc.length - 2]);
