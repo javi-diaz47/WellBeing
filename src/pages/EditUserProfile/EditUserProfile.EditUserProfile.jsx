@@ -22,6 +22,7 @@ function EditUserProfile(props){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [notification, setNotification] = useState("");
+    const [height, setHeight] = useState("")
 
     const verifyNoti = () => {
         if(!!notification && notification != undefined && notification != ""){
@@ -41,6 +42,7 @@ function EditUserProfile(props){
             email: !!email && email != undefined? email : user.email,
             password: !!password && password != undefined? password : user.password,
             notification: verifyNoti(),
+            height: !!height && height != undefined? height : user.height,
             measures: user.measures
         }
 
@@ -54,7 +56,8 @@ function EditUserProfile(props){
                         lastname: newUser.lastname,
                         email: newUser.email,
                         password: newUser.password,
-                        notification: newUser.notification
+                        notification: newUser.notification,
+                        height: newUser.height
                    },
                 ])
                 .eq('id', user.id)
@@ -93,6 +96,8 @@ function EditUserProfile(props){
                 password={password}
                 setPassword={setPassword}
                 notification={notification}
+                height={height}
+                setHeight={setHeight}
                 setNotification={setNotification}
                 updateUser={updateUser}
             />

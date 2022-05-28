@@ -11,6 +11,8 @@ function SignupForm(props){
         setEmail,
         password,
         setPassword,
+        height,
+        setHeight,
         onSubmit
     } = props;
 
@@ -28,6 +30,10 @@ function SignupForm(props){
 
     const passwordOnChange = (ev) => {
         setPassword(ev.target.value);
+    }
+
+    const heightOnChange = (ev) => {
+        setHeight(ev.target.value)
     }
 
     return (
@@ -71,6 +77,17 @@ function SignupForm(props){
                     required
                 />
             </label>
+            <label name="height">
+                Altura (m)
+                <input 
+                    name="height"
+                    value={height}
+                    onChange={heightOnChange}
+                    required
+                />
+            </label>
+
+
 
             <button type="submit" className="btn">Registrame</button>
 

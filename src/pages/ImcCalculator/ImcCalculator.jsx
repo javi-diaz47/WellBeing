@@ -41,7 +41,7 @@ function ImcCalculator(props){
         });
 
 
-    const [height, setHeight] = useState("");
+    const [height, setHeight] = useState(`${user.height}`);
     const [weight, setWeight] = useState("");
 
     const heightOnChange = (ev) => {
@@ -86,6 +86,7 @@ function ImcCalculator(props){
                 lastname: user.lastname,
                 email: user.email,
                 password: user.password,
+                height: user.height,
                 notification: user.notification,
                 measures: {
                     height: newHeight,
@@ -139,7 +140,7 @@ function ImcCalculator(props){
                     ).then((result) => {
                         console.log(result.text);
                         }, (error) => {
-                        console.log(error.text);
+                        console.error(error.text);
                     });
                 }
 
@@ -164,6 +165,7 @@ function ImcCalculator(props){
             lastname: user.lastname,
             email: user.email,
             password: user.password,
+            height: !!height && height != null? height : user.height,
             notification: notification,
             measures: user.measures
         }
@@ -178,6 +180,7 @@ function ImcCalculator(props){
                         lastname: newUser.lastname,
                         email: newUser.email,
                         password: newUser.password,
+                        height: newUser.height,
                         notification: newUser.notification
                    },
                 ])
@@ -201,6 +204,7 @@ function ImcCalculator(props){
 
 
     useEffect(() => {
+        setHeight(`${user.height}`);
         setData({
             labels: user.measures.dates,
             datasets: [
@@ -224,6 +228,7 @@ function ImcCalculator(props){
                 <article className="calculator">
                     
                     <ImcCalculatorForm
+                        user={user}
                         calculateImc={calculateImc}
                         heightOnChange={heightOnChange}
                         weightOnChange={weightOnChange}

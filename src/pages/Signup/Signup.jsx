@@ -25,6 +25,7 @@ function Signup(props){
                         lastname,
                         email,
                         password,
+                        height
                     },
                 ])
 
@@ -35,12 +36,14 @@ function Signup(props){
                 lastmame: lastname,
                 email,
                 password,
+                height,
             });
 
             setName("");
             setLastname("");
             setEmail("");
             setPassword("");
+            setHeight(0);
             
             setLoading(false);
             setError(false);
@@ -58,6 +61,7 @@ function Signup(props){
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [height, setHeight] = useState(0);
     
     return (
         <section className="sign-up">
@@ -73,6 +77,8 @@ function Signup(props){
                 email={email}
                 setEmail={setEmail}
                 password={password}
+                height={height}
+                setHeight={setHeight}
                 setPassword={setPassword}
                 onSubmit={signupUser} 
             />

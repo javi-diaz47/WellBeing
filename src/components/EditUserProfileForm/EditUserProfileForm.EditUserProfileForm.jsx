@@ -12,6 +12,8 @@ function EditUserProfileForm(props){
         setEmail,
         password, 
         setPassword,
+        height,
+        setHeight,
         notification, 
         setNotification,
         updateUser
@@ -35,6 +37,10 @@ function EditUserProfileForm(props){
 
     const notificationOnChange = (ev) => {
         setNotification(ev.target.value);
+    }
+
+    const heightOnChange = (ev) => {
+        setHeight(ev.target.value);
     }
 
     return(
@@ -76,6 +82,16 @@ function EditUserProfileForm(props){
                     value={password}
                     placeholder={user.password}
                     onChange={passwordOnChange}
+                />
+            </label>
+
+            <label name="height">
+                Altura (m)
+                <input 
+                    name="height"
+                    value={height}
+                    placeholder={user.height}
+                    onChange={heightOnChange}
                 />
             </label>
 
