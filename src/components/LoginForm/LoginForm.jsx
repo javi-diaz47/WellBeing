@@ -49,14 +49,14 @@ function LoginForm(props){
             
             <button type="submit" className="btn">Iniciar sesion</button>
             
-            <p>No te has registrado aun?
+            <p>¿No te has registrado aún?
                 <Link to="/sign-up"> Registrarme</Link>
             </p>
 
             {
                 !!error &&
                 <p className="error">
-                    Correo o contrasena incorrectos
+                    Correo o contraseña incorrectos
                 </p>
             }
 

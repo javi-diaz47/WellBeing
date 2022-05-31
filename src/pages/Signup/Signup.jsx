@@ -48,6 +48,8 @@ function Signup(props){
             setLoading(false);
             setError(false);
 
+            alert("Te has registrado correctamente")
+
             navigate("/login");
 
         }catch(error){

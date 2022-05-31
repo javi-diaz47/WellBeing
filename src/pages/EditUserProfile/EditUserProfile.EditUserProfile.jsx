@@ -71,6 +71,8 @@ function EditUserProfile(props){
             setLoading(false);
             setError(false);
 
+            alert("Se ha editado el perfil correctamente")
+
         }catch(error){
             console.error(error.error_description || error.message);
             setError(true);

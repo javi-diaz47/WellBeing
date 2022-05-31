@@ -195,6 +195,8 @@ function ImcCalculator(props){
             setLoading(false);
             setError(false);
 
+            alert("Te has suscrito a las notificaciones de email")
+
         }catch(error){
             console.error(error.error_description || error.message);
             setError(true);
