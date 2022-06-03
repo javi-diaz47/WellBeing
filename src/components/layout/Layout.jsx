@@ -33,7 +33,7 @@ function Layout(props){
                             <Link to="/" > Inicio </Link>
                         </li>
                         <li>
-                            <Link to="contact-us"> Contactanos </Link>
+                            <Link to="contact-us">Contáctanos</Link>
                         </li>
                         <li>
                             <Link to="about-us">Nosotros</Link>
@@ -49,7 +49,7 @@ function Layout(props){
                                 
                                 ||
                                 
-                                <Button text="Iniciar sesion" link="login"/>
+                                <Button text="Iniciar sesión" link="login"/>
                         }
 
                     </ul>

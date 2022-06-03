@@ -20,9 +20,9 @@ function Home(props){
                     <main>
                         <h2>Weight Tracker</h2>
                         <p>
-                            Bienvenido a weight tracker, en este sitio web podras
-                            monitorear tu imc, su evolucion en el tiempo, las
-                            estadisticas y recibir notificaciones acerca de su peso
+                            Bienvenido a Weight Tracker, en este sitio web podrás 
+                            monitorear tu IMC, su evolución en el tiempo, las 
+                            estadísticas y recibir notificaciones acerca de tu peso.
                         </p>
                         {
                             !!isLogged && !!user.name && user.name !== "" &&

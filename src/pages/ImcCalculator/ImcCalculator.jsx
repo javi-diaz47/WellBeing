@@ -31,7 +31,7 @@ function ImcCalculator(props){
             labels: user.measures.dates,
             datasets: [
                 {
-                    label: 'Medicion IMC',
+                    label: 'Medición IMC',
                     data: user.measures.imc,
                     borderColor: 'rgb(53, 162, 235)',
                     backgroundColor: 'rgba(53, 162, 235, 0.5)',
@@ -111,8 +111,10 @@ function ImcCalculator(props){
                     let message = "";
                     
                     if(newWeightLevelIndex == 0){
-                        message = "ups, estas bajo de peso, pero no te preocupes nosotros sabemos \n que puedes con esto y muy pronto alcanzaras tu peso ideal";
-                    }else if(newWeightLevelIndex == 2 && oldWeightLevel == 3){
+                        message = "Ups, estás bajo de peso, pero no te preocupes, nosotros sabemos que puedes con esto y muy pronto alcanzarás tu peso ideal."
+                    }
+                    
+                    if(newWeightLevelIndex == 2 && oldWeightLevel == 3){
                         message = "¡Muy bien! Ya estas cerca de llegar a tu peso ideal, ¡Tu puedes!";
                     }
                     
@@ -211,7 +213,7 @@ function ImcCalculator(props){
             labels: user.measures.dates,
             datasets: [
                 {
-                    label: 'Medicion IMC',
+                    label: 'Medición IMC',
                     data: user.measures.imc,
                     borderColor: 'rgb(249, 170, 44)',
                     backgroundColor: 'rgba(249, 170, 44, 0.5)',

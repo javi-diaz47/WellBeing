@@ -12,7 +12,7 @@ function About(){
                 </figure>
                 <div className="content">
                     <div className="content-wrapper">
-                        <h2>CENTRO DE DESARROLLO TECNOLOGICO (CDT)</h2>
+                        <h2>CENTRO DE DESARROLLO TECNOLÓGICO (CDT)</h2>
                         <p>
                             Somos una empresa que brinda servicios de desarrollo y
                             administración de software virtuales, enfocado en empresas pequeñas,

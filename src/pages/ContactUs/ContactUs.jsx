@@ -57,7 +57,7 @@ function ContactUs(props){
 
             <form ref={form} onSubmit={onSendEmail} className="neumorphism">
             
-            <h2>Contactanos</h2> 
+            <h2>Contáctanos</h2> 
 
             <label name="name">
                 Nombre

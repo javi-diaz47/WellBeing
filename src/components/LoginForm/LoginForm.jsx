@@ -23,7 +23,7 @@ function LoginForm(props){
     return (
         <form onSubmit={loginUser} className="neumorphism">
             
-            <h2>Iniciar sesion</h2> 
+            <h2>Iniciar sesión</h2> 
             
             <label name="email">
                 Correo
@@ -47,7 +47,7 @@ function LoginForm(props){
                 />
             </label>
             
-            <button type="submit" className="btn">Iniciar sesion</button>
+            <button type="submit" className="btn">Iniciar sesión</button>
             
             <p>¿No te has registrado aún?
                 <Link to="/sign-up"> Registrarme</Link>
